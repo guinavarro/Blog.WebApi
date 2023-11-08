@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    id serial PRIMARY KEY,
+    id bigserial PRIMARY KEY,
     created_at timestamptz NOT NULL,
     key uuid NOT NULL,
     username varchar NOT NULL,
@@ -7,23 +7,15 @@ CREATE TABLE users (
     passwordHash varchar NOT NULL
 );
 
-CREATE TABLE tagspost (
-    id serial PRIMARY KEY,
-    created_at timestamptz NOT NULL,
-    key uuid NOT NULL,
-    post_id int8 REFERENCES posts(id) NOT NULL,
-    tag_id int8 REFERENCES tags(id) NOT NULL
-);
-
 CREATE TABLE tags (
-    id serial PRIMARY KEY,
+    id bigserial PRIMARY KEY,
     created_at timestamptz NOT NULL,
     key uuid NOT NULL,
     name varchar NOT NULL
 );
 
 CREATE TABLE posts (
-    id serial PRIMARY KEY,
+    id bigserial PRIMARY KEY,
     created_at timestamptz NOT NULL,
     key uuid NOT NULL,
     title varchar NOT NULL,
@@ -32,8 +24,16 @@ CREATE TABLE posts (
     user_id int8 REFERENCES users(id) NOT NULL
 );
 
+CREATE TABLE tagspost (
+    id bigserial PRIMARY KEY,
+    created_at timestamptz NOT NULL,
+    key uuid NOT NULL,
+    post_id int8 REFERENCES posts(id) NOT NULL,
+    tag_id int8 REFERENCES tags(id) NOT NULL
+);
+
 CREATE TABLE multimedia (
-    id serial PRIMARY KEY,
+    id bigserial PRIMARY KEY,
     created_at timestamptz NOT NULL,
     key uuid NOT NULL,
     post_id int8 REFERENCES posts(id) NOT NULL,

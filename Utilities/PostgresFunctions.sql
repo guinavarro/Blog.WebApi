@@ -14,7 +14,7 @@ BEGIN
     RETURN tag_id;
 END;
 $$
-LANGUAGE sql
+LANGUAGE plpgsql;
 
 -- get_multimedia_by_post_key
 CREATE OR REPLACE FUNCTION get_multimedia_by_post_key(post_key uuid)
@@ -75,7 +75,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- insert_into_posts
-CREATE OR REPLACE FUNCTION insert_posts(
+CREATE OR REPLACE FUNCTION insert_into_posts(
   title text,
   content text,
   userId int8,
